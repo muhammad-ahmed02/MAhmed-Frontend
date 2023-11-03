@@ -1,8 +1,6 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import axios from "axios";
-import { BACKEND_URL } from "../config";
+import DataBridge from "../src/assets/DataBridge.jpg";
 import "./CSS Files/projects.css";
 import PropTypes from "prop-types";
 
@@ -23,7 +21,7 @@ function ProjectCard({
 }) {
   const tech = technologies.map(
     (tech, index) =>
-      tech.name + `${index == technologies.length - 1 ? "." : ", "}`
+      tech + `${index == technologies.length - 1 ? "." : ", "}`
   );
   return (
     <div className="project">
@@ -48,14 +46,16 @@ function ProjectCard({
 }
 
 function Projects() {
-  const [projects, setProjects] = React.useState([]);
+  const projects = [
+    {
+      name: "DataBridge",
+      image: DataBridge,
+      githubLink: "https://github.com/muhammad-ahmed02/DataBridge",
+      technologies: ['Python', 'Django', 'AWS S3', 'Snowflake', 'HTML', 'Bootstrap CSS'],
+      details: "DataBridge project is a conceptual implementation of ETL."
+    }
+  ]
 
-  React.useEffect(() => {
-    axios
-      .get(BACKEND_URL + "/project/")
-      .then((res) => setProjects(res.data))
-      .catch((err) => console.log(err));
-  }, []);
   return (
     <div id="Projects">
       <h1 className="title">

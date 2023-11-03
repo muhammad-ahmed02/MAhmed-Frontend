@@ -77,7 +77,7 @@ function Navbar() {
         <h2>
           <span ref={typewriterRef}></span>
         </h2>
-        <p>{`I'm currently a Full Stack Developer seeking many ways to improve my
+        <p>{`I'm currently a Software Engineer seeking many ways to improve my
           skills through problem-solving and creating various projects! Scroll
           down to learn more about me.`}</p>
         <Link to="Contact" smooth={true} duration={900}>
