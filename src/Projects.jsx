@@ -94,6 +94,7 @@ function Projects() {
       technologies: [
         "Python",
         "Django",
+        "Pandas",
         "AWS S3",
         "Snowflake",
         "HTML",
@@ -146,7 +147,7 @@ function Projects() {
       technologies: ["Python", "Django", "React.js", "Firebase"],
       details:
         "Real time Quiz Application for client to take quiz for people in bulk at the same time. \
-        No matter time zone, but 1 admin can control the quiz for mulitple users at the same time. \
+        No matter time zone, but 1 admin can control the quiz for multiple users at the same time. \
         I used firebase for the realtime communication between user and admin.",
     },
     {
@@ -167,7 +168,8 @@ function Projects() {
       date: "Aug 2021",
       technologies: ["Python"],
       details:
-        "Instagram Image Downloader - Python script to download images of any account that you follow or is public, videos can't be downloaded instead thumbnails will be downloaded.",
+        "Instagram Image Downloader - Python script to download images of any account that you follow or is public, \
+        videos can't be downloaded instead thumbnails will be downloaded.",
     },
   ];
 
