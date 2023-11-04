@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faChrome } from "@fortawesome/free-brands-svg-icons";
 import DataBridge from "../src/assets/DataBridge.jpg";
+import IMS from "../src/assets/IMS.png";
+import IID from "../src/assets/IID.avif";
+import SMS from "../src/assets/SMS.png";
 import "./CSS Files/projects.css";
 import PropTypes from "prop-types";
 
@@ -8,6 +11,7 @@ ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
   imageSrc: PropTypes.string,
   githubLink: PropTypes.string,
+  projectLink: PropTypes.string,
   technologies: PropTypes.array,
   description: PropTypes.string.isRequired,
 };
@@ -16,27 +20,56 @@ function ProjectCard({
   title,
   imageSrc,
   githubLink,
+  projectLink,
   technologies,
   description,
 }) {
   const tech = technologies.map(
-    (tech, index) =>
-      tech + `${index == technologies.length - 1 ? "." : ", "}`
+    (tech, index) => tech + `${index == technologies.length - 1 ? "." : ", "}`
   );
   return (
     <div className="project">
-      <a href={githubLink} target="_blank" rel="noopener noreferrer">
-        <img className="images" src={imageSrc} alt={title} />
+      <a
+        className="project-thumbnail"
+        href={githubLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="images"
+          src={imageSrc}
+          alt={title}
+          width="100%"
+          height="250px"
+        />
       </a>
       <div className="project-info">
         <div className="project-title">
           <h2>{title}</h2>
-          <div className="liness"></div>
-          <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faGithub} size="2x" />
-          </a>
+          <div className="project-badges">
+            {githubLink && (
+              <a
+                className="badge"
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faGithub} size="2x" />
+              </a>
+            )}
+            {projectLink && (
+              <a
+                className="badge"
+                href={projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faChrome} size="2x" />
+              </a>
+            )}
+          </div>
         </div>
-        <h3>
+        <h3 className="mb-5px">
           <span style={{ color: "#FF004F" }}>{tech}</span>
         </h3>
         <p>{description}</p>
@@ -50,11 +83,54 @@ function Projects() {
     {
       name: "DataBridge",
       image: DataBridge,
-      githubLink: "https://github.com/muhammad-ahmed02/DataBridge",
-      technologies: ['Python', 'Django', 'AWS S3', 'Snowflake', 'HTML', 'Bootstrap CSS'],
-      details: "DataBridge project is a conceptual implementation of ETL."
+      github: "https://github.com/muhammad-ahmed02/DataBridge",
+      website: "https://the-data-bridge-c59f00b20f6f.herokuapp.com/",
+      technologies: [
+        "Python",
+        "Django",
+        "AWS S3",
+        "Snowflake",
+        "HTML",
+        "Bootstrap CSS",
+      ],
+      details:
+        "The Data Bridge project showcases my expertise in data warehousing and ETL processing. \
+         The project involves moving data from AWS S3 to Snowflake using ETL processing. \
+         The ETL process is implemented using the Snowflake library in the Django framework. \
+         The project demonstrates how to move incremental data from AWS S3 to an existing Snowflake table seamlessly, \
+         without manual intervention. The project uses a simple and practical approach to move data from AWS S3 to Snowflake, \
+         making it easy to understand and implement. The project is hosted on Heroku and is a great example of my skills and expertise in data engineering and software development.",
+    },
+    {
+      name: "Invetory Management System",
+      image: IMS,
+      github: "https://github.com/muhammad-ahmed02/TFB-server.git",
+      technologies: ["Python", "Django", "Rest APIs"],
+      details:
+        "This project is created using Python Django framework and REST APIs. \
+        The system is designed to manage inventory for small businesses and stores. \
+        The project uses Django REST framework to create RESTful APIs for managing inventory data. \
+        The system allows users to add, edit, and delete products, as well as track inventory levels and generate reports. \
+        The project also includes features such as user authentication and authorization, search functionality, and pagination. \
+        The system is designed to be scalable and can be easily customized to fit the needs of different businesses.",
+    },
+    {
+      name: "Instagram Image Downloader",
+      image: IID,
+      github: "https://github.com/muhammad-ahmed02/Instagram-Image-Scrapper.git",
+      technologies: ["Python"],
+      details:
+        "Instagram Image Downloader - Python script to download images of any account that you follow or is public, videos can't be downloaded instead thumbnails will be downloaded.",
+    },
+    {
+      name: "SMS Safety",
+      image: SMS,
+      github: "https://github.com/muhammad-ahmed02/sms-safety-frontend.git",
+      website: "https://smssafty.com/",
+      technologies: ["React.js"],
+      details: "Business website for a company named SMS Safety (Sheikh Muhammad Saeed & Sons) for the display of their safety products mainly leather gloves."
     }
-  ]
+  ];
 
   return (
     <div id="Projects">
@@ -67,7 +143,8 @@ function Projects() {
             key={index}
             title={project.name}
             imageSrc={project.image}
-            githubLink={project.link}
+            githubLink={project.github}
+            projectLink={project.website}
             technologies={project.technologies}
             description={project.details}
           />
