@@ -4,6 +4,8 @@ import DataBridge from "../src/assets/DataBridge.jpg";
 import IMS from "../src/assets/IMS.png";
 import IID from "../src/assets/IID.avif";
 import SMS from "../src/assets/SMS.png";
+import quiz from "../src/assets/quiz.webp";
+import api from "../src/assets/api.png";
 import "./CSS Files/projects.css";
 import PropTypes from "prop-types";
 
@@ -12,6 +14,7 @@ ProjectCard.propTypes = {
   imageSrc: PropTypes.string,
   githubLink: PropTypes.string,
   projectLink: PropTypes.string,
+  date: PropTypes.string.isRequired,
   technologies: PropTypes.array,
   description: PropTypes.string.isRequired,
 };
@@ -21,6 +24,7 @@ function ProjectCard({
   imageSrc,
   githubLink,
   projectLink,
+  date,
   technologies,
   description,
 }) {
@@ -69,6 +73,7 @@ function ProjectCard({
             )}
           </div>
         </div>
+        <span>{date}</span>
         <h3 className="mb-5px">
           <span style={{ color: "#FF004F" }}>{tech}</span>
         </h3>
@@ -85,6 +90,7 @@ function Projects() {
       image: DataBridge,
       github: "https://github.com/muhammad-ahmed02/DataBridge",
       website: "https://the-data-bridge-c59f00b20f6f.herokuapp.com/",
+      date: "Oct 2023 - Nov 2023",
       technologies: [
         "Python",
         "Django",
@@ -95,17 +101,35 @@ function Projects() {
       ],
       details:
         "The Data Bridge project showcases my expertise in data warehousing and ETL processing. \
-         The project involves moving data from AWS S3 to Snowflake using ETL processing. \
-         The ETL process is implemented using the Snowflake library in the Django framework. \
-         The project demonstrates how to move incremental data from AWS S3 to an existing Snowflake table seamlessly, \
-         without manual intervention. The project uses a simple and practical approach to move data from AWS S3 to Snowflake, \
-         making it easy to understand and implement. The project is hosted on Heroku and is a great example of my skills and expertise in data engineering and software development.",
+        The project involves moving data from AWS S3 to Snowflake using ETL processing. \
+        The ETL process is implemented using the Snowflake library in the Django framework."
+    },
+    {
+      name: "API integrations (Company Product)",
+      image: api,
+      date: "July 2022 - Present",
+      technologies: ["Python", "Pandas"],
+      details: `1. LinkedIn. \
+             2. BusinessCenteral365. \
+             3. Google Drive. \
+             4. Gmail. \
+             5. Slack. \
+             6. AWS S3. \
+             7. Microsoft Azure. \
+             And many more APIs like these...`,
     },
     {
       name: "Invetory Management System",
       image: IMS,
       github: "https://github.com/muhammad-ahmed02/TFB-server.git",
-      technologies: ["Python", "Django", "Rest APIs"],
+      date: "May 2022 - Aug 2022",
+      technologies: [
+        "Python",
+        "Django",
+        "Rest APIs",
+        "React.js",
+        "Material-UI",
+      ],
       details:
         "This project is created using Python Django framework and REST APIs. \
         The system is designed to manage inventory for small businesses and stores. \
@@ -115,21 +139,36 @@ function Projects() {
         The system is designed to be scalable and can be easily customized to fit the needs of different businesses.",
     },
     {
-      name: "Instagram Image Downloader",
-      image: IID,
-      github: "https://github.com/muhammad-ahmed02/Instagram-Image-Scrapper.git",
-      technologies: ["Python"],
+      name: "Quizzers Club",
+      image: quiz,
+      website: "https://quizzers.club/",
+      date: "March 2022",
+      technologies: ["Python", "Django", "React.js", "Firebase"],
       details:
-        "Instagram Image Downloader - Python script to download images of any account that you follow or is public, videos can't be downloaded instead thumbnails will be downloaded.",
+        "Real time Quiz Application for client to take quiz for people in bulk at the same time. \
+        No matter time zone, but 1 admin can control the quiz for mulitple users at the same time. \
+        I used firebase for the realtime communication between user and admin.",
     },
     {
       name: "SMS Safety",
       image: SMS,
       github: "https://github.com/muhammad-ahmed02/sms-safety-frontend.git",
+      date: "Dec 2021",
       website: "https://smssafty.com/",
       technologies: ["React.js"],
-      details: "Business website for a company named SMS Safety (Sheikh Muhammad Saeed & Sons) for the display of their safety products mainly leather gloves."
-    }
+      details:
+        "Business website for a company named SMS Safety for the display of their safety products mainly leather gloves.",
+    },
+    {
+      name: "Instagram Image Downloader",
+      image: IID,
+      github:
+        "https://github.com/muhammad-ahmed02/Instagram-Image-Scrapper.git",
+      date: "Aug 2021",
+      technologies: ["Python"],
+      details:
+        "Instagram Image Downloader - Python script to download images of any account that you follow or is public, videos can't be downloaded instead thumbnails will be downloaded.",
+    },
   ];
 
   return (
@@ -145,6 +184,7 @@ function Projects() {
             imageSrc={project.image}
             githubLink={project.github}
             projectLink={project.website}
+            date={project.date}
             technologies={project.technologies}
             description={project.details}
           />
